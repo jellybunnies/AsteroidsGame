@@ -24,9 +24,9 @@ public void draw()
 }
 public void keyPressed()
 {
-  //hyperspeed
+  //hyperspace
   if(key == 'h'){
-    bob.setXspeed(0); 
+    //bob.setXspeed(0); 
     bob.myCenterX = (Math.random()*400);
     bob.myCenterY = (Math.random()*400);
     bob.myPointDirection = (Math.random()*330 + 30);
