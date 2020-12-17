@@ -1,12 +1,18 @@
 Spaceship bob = new Spaceship();
 Star[] nightSky = new Star[200];
+ArrayList <Asteroid> rocks = new ArrayList <Asteroid>();
+ArrayList <Bullet> shots = new ArrayList <Bullet>();
 public void setup()
 {
-  size(400,400);
+  size(600,600);
   background(0);
   for (int i = 0; i < nightSky.length; i++)
   {
     nightSky[i] = new Star();
+  }
+  for (int i = 0; i < 15; i++)
+  {
+    rocks.add(new Asteroid());
   }
 }
 public void draw()
@@ -16,11 +22,23 @@ public void draw()
   {
     nightSky[i].show();
   }
+  for (int i = 0; i < rocks.size(); i++)
+  {
+    rocks.get(i).move();
+    rocks.get(i).show();
+    float d = dist(bob.getX(), bob.getY(), rocks.get(i).getX(), rocks.get(i).getY());
+    if(d < 30)
+      rocks.remove(i);
+  }
   bob.show();
   bob.move();
   bob.turn(0);
   bob.accelerate(0);
-  
+  for (int i = 0; i < shots.size(); i++)
+  {
+    shots.get(i).move();
+    shots.get(i).show();
+  }
 }
 public void keyPressed()
 {
@@ -33,13 +51,13 @@ public void keyPressed()
     bob.myXspeed = 0;
     bob.myYspeed = 0;
   }
-  //spin right
+  //spin cw
   if(key == 'l'){
-    bob.myPointDirection = bob.myPointDirection + 30; 
+    bob.turn(30); 
   }
-  //spin left
+  //spin ccw
   if(key == 'k'){
-    bob.myPointDirection = bob.myPointDirection - 30; 
+    bob.turn(-30); 
   }
   //accelerate
   if(key == 'd'){
@@ -53,5 +71,9 @@ public void keyPressed()
   if(key == 's'){
     bob.myXspeed = 0;
     bob.myYspeed = 0;
+  }
+  //bullets
+  if(key == ' '){
+    shots.add(new Bullet(bob));
   }
 }
