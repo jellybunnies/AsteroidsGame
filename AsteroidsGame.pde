@@ -1,5 +1,5 @@
 Spaceship bob = new Spaceship();
-Star[] nightSky = new Star[200];
+Star[] nightSky = new Star[300];
 ArrayList <Asteroid> rocks = new ArrayList <Asteroid>();
 ArrayList <Bullet> shots = new ArrayList <Bullet>();
 public void setup()
@@ -45,8 +45,8 @@ public void keyPressed()
   //hyperspace
   if(key == 'h'){
     //bob.setXspeed(0); 
-    bob.myCenterX = (Math.random()*400);
-    bob.myCenterY = (Math.random()*400);
+    bob.myCenterX = (Math.random()*600);
+    bob.myCenterY = (Math.random()*600);
     bob.myPointDirection = (Math.random()*330 + 30);
     bob.myXspeed = 0;
     bob.myYspeed = 0;
